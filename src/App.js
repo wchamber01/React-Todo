@@ -7,8 +7,24 @@ class App extends React.Component {
   
   constructor() {
     super();
-    this.state = {};
+    this.state = [
+      {
+      todo: "clean",
+      id: Date.now(),
+      completed: false,
+      }
+    ];
   }
+
+  addTodo = newTodoText => {
+    const newTodo = {
+    todo: "",
+    id: Date.now(),
+    completed: false
+    }
+
+    this.setState ([...this.state, newTodo])
+  };
 
   render() {
     return (
