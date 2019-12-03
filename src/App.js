@@ -8,29 +8,36 @@ class App extends React.Component {
   // this component is going to take care of state, and any change handlers you need to work with your state
   
   constructor() {
+    //Create Constructor with "state" 
     super();
+    //Initialize "state"
     this.state = {
       items:[
         {
-        todo: "clean",
-        id: Date.now(),
-        completed: false,
-        }
+        todo: "organize garage",
+        id: 1463615,
+        completed: false
+        },
+        {
+          todo: "clean off work bench",
+          id: 651684,
+          completed: false
+        },
+        {
+          todo: "mow",
+          id: 351684,
+          completed: false
+        },
+        {
+          todo: "weed garden",
+          id: 4987894,
+          completed: false
+        },
       ]
     };
   }
 
-  // toggle = index => {
-  //   this.setState({
-  //     items[index].completed
-  //   })
-  // } 
-
-  clearTodo = () => {
-    this.setState({
-      items: this.state.items.filter(item => !item.completed)
-    })
-  }
+  //Create class methods to update "state"
 
   addTodo = newTodoText => {
     const newTodo = {
@@ -42,6 +49,20 @@ class App extends React.Component {
     this.setState ({
       items:[...this.state.items, newTodo]})
   };
+  
+  toggleCompleted = (event) => {
+    this.setState({
+      completed: !event.target.completed
+    })
+  } 
+
+  clearTodo = () => {
+    this.setState({
+      items: this.state.items.filter(item => !item.completed)
+    })
+  }
+
+  
 
   render() {
     return (

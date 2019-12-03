@@ -4,6 +4,7 @@ class ListForm extends React.Component {
   // Constructor with state
   constructor() {
     super();
+    //initialize state of "newItem" to ""
     this.state = {
       newItem: ""
     };
@@ -11,15 +12,15 @@ class ListForm extends React.Component {
 
   handleChanges = event => {
     // update state with each keystroke
-    this.setState({ newItem: event.target.value });
+    this.setState({ newItem: event.target.value });//sets newItem value to = input value
   };
 
-  // class property to submit form
+  // create class method to submit form and set state
   handleSubmit = event => {
-    event.preventDefault();
-    this.props.addTodo(this.state.newItem);
+    event.preventDefault(); //Prevents page from reloading on submit
+    this.props.addTodo(this.state.newItem);//Assigns value of newItem to "property" of addTodo function by using "props"
     this.setState({
-      newItem:""
+      newItem:""//clears input value after submit
     });
   };
 
@@ -27,8 +28,8 @@ class ListForm extends React.Component {
     //a lifecycle method - in charge of rendering JSX to the DOM
     console.log("rendering form");
     return (
-      <form onSubmit={this.handleSubmit}>
-        {/* This is an uncontrolled component 😬 We want it to be controlled by state */}
+      <form onSubmit={this.handleSubmit}> {/*onSubmit calls the handleSubmit function */}
+        {/* "form" is an uncontrolled component 😬 We want it to be controlled by state */}
         <input
           value={this.state.newItem}
           onChange={this.handleChanges}
@@ -36,7 +37,7 @@ class ListForm extends React.Component {
           name="item"
         />
         <button>Add Item</button>
-        <button>Clear List</button>
+        {/*<button>Clear List</button>*/}
 
       </form>
     );

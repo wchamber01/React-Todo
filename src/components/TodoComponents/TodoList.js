@@ -3,13 +3,11 @@
 import React from "react";
 import Todo from "./Todo"
 
-const TodoList = props => {
+const TodoList = props => {//use "props" to pass in items from state
+  console.log(props, "these are my props")
   return(
     props.state.map(item => (
-        <Todo onClick= {() => 
-          {item.completed=true}} 
-          key={item.id} item={item}/>
-      
+        <Todo key={item.id} item={item}/>
       )
     )
   )
